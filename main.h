@@ -11,5 +11,6 @@
 /* prototypes */
 int _printf(const char *format, ...);
 int print_string(va_list s);
+int print_char(va_list c);
 
 #endif
