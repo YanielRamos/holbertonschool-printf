@@ -13,8 +13,6 @@ int print_char(va_list ls, int *counter)
 
 	c = (char)va_arg(ls, int);
 
-	if (c == '\0')
-		return (-1);
 
 	putchar(c);
 	(*counter)++;
