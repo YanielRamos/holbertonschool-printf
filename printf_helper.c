@@ -50,7 +50,7 @@ int print_string(va_list ls, int *counter)
 int print_percent(int *counter)
 {
 	char p = '%';
-	
+
 	putchar(p);
 	(*counter)++;
 	return (1);
