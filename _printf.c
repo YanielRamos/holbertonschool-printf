@@ -1,4 +1,7 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
 
 /**
  * _printf - function that produces output according to a format
@@ -9,12 +12,13 @@
 int _printf(const char *format, ...)
 {
 	va_list ls;
-	char c;
-	const char *s;
-	int counter;
+	int counter = 0;
 
 	va_start(ls, format);
 
+	if (ls == NULL || format == NULL)
+		return (-1);
+		
 	while (*format != '\0')
 	{
 		if (*format == '%')
@@ -24,30 +28,14 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					{
-						c = va_arg(ls, int);
-						putchar(c);
-						counter++;
+						print_char(ls, &counter);
 						break;
-					}
 				case 's':
-					{
-						s = va_arg(ls, char *);
-						while (*s != '\0')
-						{
-
-							putchar(*s);
-							s++;
-							counter++;
-						}
+						print_string(ls, &counter);
 						break;
-					}
 				case '%':
-					{
-						putchar('%');
-						counter++;
+						print_percent(&counter);
 						break;
-					}
 			}
 		}
 		else
@@ -55,7 +43,7 @@ int _printf(const char *format, ...)
 			putchar(*format);
 			counter++;
 		}
-		format++;
+	format++;
 	}
 	va_end(ls);
 	return (counter);
