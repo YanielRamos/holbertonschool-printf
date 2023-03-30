@@ -4,8 +4,8 @@
 /**
  * print_char - function that prints a character
  * @ls: list with elements
- * @counter: position in string
- * Return: amount 
+ * @counter: sum of character printed
+ * Return: amount of charcter printed in function
  */
 int print_char(va_list ls, int *counter)
 {
@@ -22,11 +22,12 @@ int print_char(va_list ls, int *counter)
 /**
  * print_string - function that print a string
  * @ls: list with elements
- * @s: string to print
+ * @counter: sum of character printed
+ * Return: str with the total of character printed in function
  */
 int print_string(va_list ls, int *counter)
 {
-	const char * s;
+	const char *s;
 	int str = 0;
 
 	s = va_arg(ls, const char *);
@@ -48,6 +49,7 @@ int print_string(va_list ls, int *counter)
 /**
  * print_percent - function that prints a percent sign
  * @counter: the position in the string
+ * Return: character printed
  */
 int print_percent(int *counter)
 {
