@@ -17,4 +17,7 @@ int print_string(va_list ls, int *counter);
 
 int print_percent(int *counter);
 
+int print_int(va_list ls, int *counter);
+
+int _putchar(char c);
 #endif

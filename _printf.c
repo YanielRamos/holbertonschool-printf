@@ -1,8 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdarg.h>
-#include <unistd.h>
-
 /**
  * _printf - function that produces output according to a format
  * @format: string
@@ -19,7 +15,7 @@ int _printf(const char *format, ...)
 	if (ls == NULL || format == NULL)
 		return (-1);
 
-	while (*format != '\0')
+	for (; *format != '\0'; format++)
 	{
 		if (*format == '%')
 		{
@@ -36,14 +32,18 @@ int _printf(const char *format, ...)
 				case '%':
 						print_percent(&counter);
 						break;
+				case 'd': case 'i':
+							print_int(ls, &counter);
+							break;
+				default:
+						_putchar('%');
 			}
 		}
 		else
 		{
-			putchar(*format);
+			_putchar(*format);
 			counter++;
 		}
-	format++;
 	}
 	va_end(ls);
 	return (counter);

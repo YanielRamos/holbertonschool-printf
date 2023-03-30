@@ -11,10 +11,10 @@ int print_char(va_list ls, int *counter)
 {
 	char c;
 
-	c = (char)va_arg(ls, int);
+	c = va_arg(ls, int);
 
 
-	putchar(c);
+	_putchar(c);
 	(*counter)++;
 	return (1);
 }
@@ -38,10 +38,10 @@ int print_string(va_list ls, int *counter)
 
 	while (*s != '\0')
 	{
-		putchar(*s);
-		s++;
+		_putchar(*s);
 		(*counter)++;
 		str++;
+		s++;
 	}
 	return (str);
 }
@@ -55,7 +55,71 @@ int print_percent(int *counter)
 {
 	char p = '%';
 
-	putchar(p);
+	_putchar(p);
 	(*counter)++;
 	return (1);
+}
+
+/**
+ * print_int - function that prints a integer
+ * @ls: list with elements
+ * @counter: amount of character printed
+ * Return: amount of characters printed
+ */
+int print_int(va_list ls, int *counter)
+{
+	int value = va_arg(ls, int), num_digit, temp, i, digit, divisor = 1, ret = 0;
+	char prt;
+
+	if (value < 0)
+	{
+		_putchar('-');
+		value = -value;
+		(*counter)++;
+		ret++;
+	}
+
+	num_digit = 0, temp = value;
+	while (temp != 0)
+	{
+		num_digit++;
+		temp /= 10;
+	}
+
+	if (num_digit == 0)
+	{
+		prt = '0';
+	}
+	else
+	{
+		for (; num_digit > 0; num_digit--)
+		{
+
+			for (i = 1; i < num_digit; i++)
+			{
+				divisor *= 10;
+			}
+			digit = value / divisor;
+			value -= digit * divisor;
+			prt = (digit % 10) + '0';
+			_putchar(prt);
+			(*counter)++;
+			ret++;
+		}
+	}
+	return (ret);
+}
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+
+	return (write(1, &c, 1));
+
 }
