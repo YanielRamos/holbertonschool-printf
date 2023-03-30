@@ -100,7 +100,6 @@ int print_int(va_list ls, int *counter)
 		ret += _putchar(digit + '0');
 		value %= divisor;
 		divisor /= 10;
-		(*counter)++;
 	}
 
 	*counter += ret;
