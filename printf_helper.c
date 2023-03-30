@@ -70,31 +70,39 @@ int print_percent(int *counter)
 int print_int(va_list ls, int *counter)
 {
 	int value = va_arg(ls, int);
-	int ret = 0, temp, divisor = 1;
-	char ptr;
+	int ret = 0, digits, i, divisor, digit, temp;
 
 	if (value < 0)
 	{
-		_putchar('-');
-		ret++;
+		ret += _putchar('-');
 		value = -value;
 	}
 
+	digits = 0;
 	temp = value;
 
-	while (temp >= 10)
+	while (temp > 0)
 	{
+		digits++;
 		temp /= 10;
+	}
+
+	divisor = 1;
+
+	for (i = 0; i < digits - 1; i++)
+	{
 		divisor *= 10;
 	}
 
 	while (divisor > 0)
 	{
-		ptr = (value / divisor) % 10 + '0';
-		_putchar(ptr);
-		counter++;
+		digit = value / divisor;
+		ret += _putchar(digit + '0');
+		value %= divisor;
 		divisor /= 10;
+		(*counter)++;
 	}
+
 	*counter += ret;
 	return (ret);
 }
