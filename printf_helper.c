@@ -69,7 +69,8 @@ int print_percent(int *counter)
 
 int print_int(va_list ls, int *counter)
 {
-	int value = va_arg(ls, int), ret = 0, temp, divisor = 1;
+	int value = va_arg(ls, int);
+	int ret = 0, temp, divisor = 1;
 	char ptr;
 
 	if (value < 0)
