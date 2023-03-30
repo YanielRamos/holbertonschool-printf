@@ -66,47 +66,35 @@ int print_percent(int *counter)
  * @counter: amount of character printed
  * Return: amount of characters printed
  */
+
 int print_int(va_list ls, int *counter)
 {
-	int value = va_arg(ls, int), num_digit, temp, i, digit, divisor = 1, ret = 0;
-	char prt;
+	int value = va_arg(ls, int), ret = 0, temp, divisor = 1;
+	char ptr;
 
 	if (value < 0)
 	{
 		_putchar('-');
-		value = -value;
-		(*counter)++;
 		ret++;
+		value = -value;
 	}
 
-	num_digit = 0, temp = value;
-	while (temp != 0)
+	temp = value;
+
+	while (temp >= 10)
 	{
-		num_digit++;
 		temp /= 10;
+		divisor *= 10;
 	}
 
-	if (num_digit == 0)
+	while (divisor > 0)
 	{
-		prt = '0';
+		ptr = (value / divisor) % 10 + '0';
+		_putchar(ptr);
+		counter++;
+		divisor /= 10;
 	}
-	else
-	{
-		for (; num_digit > 0; num_digit--)
-		{
-
-			for (i = 1; i < num_digit; i++)
-			{
-				divisor *= 10;
-			}
-			digit = value / divisor;
-			value -= digit * divisor;
-			prt = (digit % 10) + '0';
-			_putchar(prt);
-			(*counter)++;
-			ret++;
-		}
-	}
+	*counter += ret;
 	return (ret);
 }
 
