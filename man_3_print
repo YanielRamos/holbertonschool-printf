@@ -12,7 +12,7 @@ _printf -\ formatted output conversion
 .B _printf()
 Prints to standart output under the control of a
 .I format
-string taht specefies how subsequent arguments are converted for output.
+string that specefies how subsequent arguments are converted for output.
 .SH Return Value
 Upon succesful return this function return the number of characters printed (excluding the null byte used to end output to strings).
 
