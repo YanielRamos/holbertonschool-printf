@@ -6,7 +6,7 @@ _printf -\ formatted output conversion
 .B #included "main.h"
 
 .B int _printf(const char *
-.I formar
+.I format
 .B , ...)
 .SH Description 
 .B _printf()
