@@ -38,9 +38,9 @@ Write a function that produces output according to a format.
  ````c 
 int _putchar(char c); /*writes the character c to stdout */
 int _printf(const char *format, ...);/* function that produces output according to a format.*/
-int print_char(va_list c);/*writes the character c to stdout */
-int print_string(va_list s);/*writes the character c to stdout */
-int print_int(va_list i);/*function that prints an integer */
+int print_char(va_list, ls, int *counter);/*writes the character c to stdout */
+int print_string(va_list ls, int, *counter);/*writes the character c to stdout */
+int print_int(va_list ls, int *counter);/*function that prints an integer */
   ````
   
  ## How to use.
